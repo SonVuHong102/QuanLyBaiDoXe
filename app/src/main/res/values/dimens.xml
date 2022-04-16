@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="mainTitlePadding">20dp</dimen>
+    <dimen name="mainTitleMargin">20dp</dimen>
+    <dimen name="mainTitleTextSize">30sp</dimen>
+    <dimen name="prefixMargin">10dp</dimen>
+    <dimen name="editTextMargin">10dp</dimen>
+    <dimen name="editTextHeight">50dp</dimen>
+    <dimen name="layoutPadding">20dp</dimen>
+    <dimen name="layoutMargin">10dp</dimen>
+    <dimen name="errorTextSize">20sp</dimen>
+</resources>

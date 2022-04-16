@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        tools:context=".LoginActivity">
+        <TextView
+            android:textSize="@dimen/mainTitleTextSize"
+            android:padding="@dimen/mainTitlePadding"
+            android:layout_margin="@dimen/mainTitleMargin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_title" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_margin="@dimen/layoutPadding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:layout_marginStart="@dimen/prefixMargin"
+                tools:src="@tools:sample/avatars"/>
+            <EditText
+                android:id="@+id/text_username"
+                android:height="@dimen/editTextHeight"
+                android:hint="@string/username"
+                android:layout_margin="@dimen/editTextMargin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_margin="@dimen/layoutPadding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:layout_marginStart="@dimen/prefixMargin"
+                tools:src="@tools:sample/avatars"/>
+            <EditText
+                android:id="@+id/text_password"
+                android:hint="@string/password"
+                android:height="@dimen/editTextHeight"
+                android:layout_margin="@dimen/editTextMargin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/label_error"
+            android:textSize="@dimen/errorTextSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000"
+            tools:text="sample error text"/>
+        <Button
+            android:id="@+id/button_login"
+            android:layout_margin="@dimen/layoutPadding"
+            android:text="@string/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</ScrollView>

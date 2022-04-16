@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">QuanLyBaiDoXe</string>
+    <string name="login_title">Parking Management</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="account_management">Account Management</string>
+    <string name="vehicle_in">Vehicle IN</string>
+    <string name="vehicle_out">Vehicle OUT</string>
+    <string name="report">Report</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="create_new_account_label">CREATE NEW ACCOUNT</string>
+    <string name="account_information_label">ACCOUNT INFORMATION</string>
+    <string name="confirm_password_label">Confirm Password</string>
+    <string name="name_label">Name</string>
+    <string name="dob_label">Date Of Birth</string>
+    <string name="email_label">EMail</string>
+    <string name="phone_number_label">Phone Number</string>
+</resources>
