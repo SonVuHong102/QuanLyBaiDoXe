@@ -1,94 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:context=".MenuActivity">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_margin="@dimen/layoutPadding"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/prefixMargin"
-                tools:src="@tools:sample/avatars"/>
-            <TextView
-                android:text="@string/account_management"
-                android:textSize="@dimen/mainTitleTextSize"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:layout_margin="@dimen/editTextMargin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_margin="@dimen/layoutPadding"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_view"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/mainTitle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/prefixMargin"
-                tools:src="@tools:sample/avatars"/>
-            <TextView
-                android:text="@string/vehicle_in"
-                android:textSize="@dimen/mainTitleTextSize"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:layout_margin="@dimen/editTextMargin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_margin="@dimen/layoutPadding"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/layoutPadding"
+            android:text="@string/login_title"
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/AppTitle"
+            android:textColor="@color/white"
+            android:textSize="30sp"/>
+
+        <View
+            android:id="@+id/contentView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/prefixMargin"
-                tools:src="@tools:sample/avatars"/>
-            <TextView
-                android:text="@string/vehicle_out"
-                android:textSize="@dimen/mainTitleTextSize"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:layout_margin="@dimen/editTextMargin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_margin="@dimen/layoutPadding"
+            android:layout_height="0dp"
+            android:alpha="0.8"
+            android:layout_marginTop="@dimen/layoutPadding"
+            android:background="@drawable/rounded_corner_top_view"
+            app:layout_constraintTop_toBottomOf="@id/mainTitle"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/prefixMargin"
-                tools:src="@tools:sample/avatars"/>
-            <TextView
-                android:text="@string/report"
-                android:textSize="@dimen/mainTitleTextSize"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:layout_margin="@dimen/editTextMargin"
+            android:layout_height="0dp"
+            android:padding="@dimen/layoutPadding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/contentView">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                tools:context=".LoginActivity">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/layoutMargin"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/suffixImageWidth"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/prefixMargin"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/icon_username" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/AppOutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/username">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/text_username"
+                            style="@style/AppEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionNext"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/layoutMargin"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/suffixImageWidth"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/prefixMargin"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/icon_password" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/AppOutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/password"
+                        app:passwordToggleEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/text_password"
+                            style="@style/AppEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="textPassword" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/errorText"
+                    style="@style/AppErrorText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/layoutPadding"
+                    tools:text="sample error text" />
+
+                <Button
+                    android:id="@+id/button_login"
+                    style="@style/AppOutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_margin="@dimen/layoutPadding"
+                    android:text="@string/login" />
+
+            </LinearLayout>
+        </ScrollView>
+        <include
+            android:id="@+id/loadingView"
+            layout="@layout/loading_screen"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"/>
+</androidx.drawerlayout.widget.DrawerLayout>

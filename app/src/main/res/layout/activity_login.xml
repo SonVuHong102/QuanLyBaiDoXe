@@ -1,76 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainView"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_background_2_40"
+        android:scaleType="fitXY" />
+
+    <View
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:alpha="0.8"
+        android:background="@drawable/rounded_corner_view"
+        app:layout_constraintTop_toTopOf="@id/scrollView"
+        app:layout_constraintBottom_toBottomOf="@id/scrollView"/>
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        tools:context=".LoginActivity">
-        <TextView
-            android:textSize="@dimen/mainTitleTextSize"
-            android:padding="@dimen/mainTitlePadding"
-            android:layout_margin="@dimen/mainTitleMargin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/login_title" />
-        <LinearLayout
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_margin="@dimen/layoutPadding"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:scaleType="fitCenter"
-                android:layout_marginStart="@dimen/prefixMargin"
-                tools:src="@tools:sample/avatars"/>
-            <EditText
-                android:id="@+id/text_username"
-                android:height="@dimen/editTextHeight"
-                android:hint="@string/username"
-                android:layout_margin="@dimen/editTextMargin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+        android:padding="@dimen/layoutPadding"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@id/imageView">
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_margin="@dimen/layoutPadding"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:scaleType="fitCenter"
-                android:layout_marginStart="@dimen/prefixMargin"
-                tools:src="@tools:sample/avatars"/>
-            <EditText
-                android:id="@+id/text_password"
-                android:hint="@string/password"
-                android:height="@dimen/editTextHeight"
-                android:layout_margin="@dimen/editTextMargin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <TextView
-            android:id="@+id/label_error"
-            android:textSize="@dimen/errorTextSize"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FF0000"
-            tools:text="sample error text"/>
-        <Button
-            android:id="@+id/button_login"
-            android:layout_margin="@dimen/layoutPadding"
-            android:text="@string/login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-</ScrollView>
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            tools:context=".LoginActivity">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/mainTitleMargin"
+                android:text="@string/login_title"
+                style="@style/AppTitle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/layoutMargin"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/suffixImageWidth"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/prefixMargin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_username" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppOutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/username">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_username"
+                        style="@style/AppEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/layoutMargin"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/suffixImageWidth"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/prefixMargin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_password" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppOutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    app:passwordToggleEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_password"
+                        style="@style/AppEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/errorText"
+                style="@style/AppErrorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/layoutPadding"
+                tools:text="sample error text" />
+
+            <Button
+                android:id="@+id/button_login"
+                style="@style/AppOutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_margin="@dimen/layoutPadding"
+                android:text="@string/login" />
+
+        </LinearLayout>
+    </ScrollView>
+    <include
+        android:id="@+id/loadingView"
+        layout="@layout/loading_screen"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

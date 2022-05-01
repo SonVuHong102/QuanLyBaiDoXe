@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppOutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:minHeight">@dimen/editTextHeight</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:singleLine">true</item>
+        <item name="boxStrokeColor">@color/light_black</item>
+        <item name="placeholderTextColor">@color/light_black</item>
+        <item name="hintTextColor">@color/light_black</item>
+        <item name="android:textColorHint">@color/light_black</item>
+        <item name="passwordToggleTint">@color/light_black</item>
+    </style>
+    <style name="AppEditText">
+        <item name="android:textColor">@color/black</item>
+        <item name="maxLines">1</item>
+        <item name="android:maxLength">255</item>
+    </style>
+    <style name="AppErrorText">
+        <item name="android:textColor">#FF0000</item>
+        <item name="android:textSize">@dimen/errorTextSize</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="AppOutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/black</item>
+        <item name="strokeWidth">@dimen/buttonStrokeWidth</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">@dimen/buttonCornerRadius</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="AppTitle">
+        <item name="android:fontFamily">@font/abril_fatface</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/mainTitleTextSize</item>
+    </style>
+</resources>

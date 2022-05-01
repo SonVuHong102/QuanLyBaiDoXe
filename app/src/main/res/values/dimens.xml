@@ -2,11 +2,16 @@
 <resources>
     <dimen name="mainTitlePadding">20dp</dimen>
     <dimen name="mainTitleMargin">20dp</dimen>
-    <dimen name="mainTitleTextSize">30sp</dimen>
+    <dimen name="mainTitleTextSize">40sp</dimen>
     <dimen name="prefixMargin">10dp</dimen>
     <dimen name="editTextMargin">10dp</dimen>
     <dimen name="editTextHeight">50dp</dimen>
     <dimen name="layoutPadding">20dp</dimen>
-    <dimen name="layoutMargin">10dp</dimen>
-    <dimen name="errorTextSize">20sp</dimen>
+    <dimen name="layoutMargin">5dp</dimen>
+    <dimen name="errorTextSize">15sp</dimen>
+    <dimen name="suffixImageWidth">50dp</dimen>
+    <dimen name="buttonStrokeWidth">1.5dp</dimen>
+    <dimen name="buttonCornerRadius">30dp</dimen>
+    <dimen name="buttonHeight">70dp</dimen>
+    <dimen name="headerHeight">200dp</dimen>
 </resources>

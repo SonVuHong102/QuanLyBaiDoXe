@@ -16,4 +16,5 @@
     <string name="dob_label">Date Of Birth</string>
     <string name="email_label">EMail</string>
     <string name="phone_number_label">Phone Number</string>
+    <string name="login_hint">Please enter your username/password</string>
 </resources>
