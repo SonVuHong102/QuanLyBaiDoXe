@@ -26,10 +26,10 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        initView()
+        initViews()
     }
 
-    private fun initView() {
+    private fun initViews() {
         hideButton()
         usernameText = findViewById(R.id.text_username)
         passwordText = findViewById(R.id.text_password)
@@ -55,8 +55,10 @@ class LoginActivity : AppCompatActivity() {
 
         loginButton.setOnClickListener{
             showLoading()
-            if(validateInput())
-                startActivity(Intent(this,MenuActivity::class.java))
+            if(validateInput()) {
+                startActivity(Intent(this, MenuActivity::class.java))
+                finish()
+            }
             else
                 errorText.text = getString(R.string.login_hint)
             hideLoading()

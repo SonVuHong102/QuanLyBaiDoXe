@@ -3,9 +3,9 @@ package com.zagon102.quanlybaidoxe
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class SignUpActivity : AppCompatActivity() {
+class CheckOutCompleteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        setContentView(R.layout.activity_check_out_complete)
     }
 }

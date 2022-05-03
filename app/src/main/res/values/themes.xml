@@ -19,7 +19,5 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.QuanLyBaiDoXe.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.QuanLyBaiDoXe.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

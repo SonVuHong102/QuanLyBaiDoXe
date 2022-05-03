@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">QuanLyBaiDoXe</string>
+    <string name="app_name">Parking Management</string>
     <string name="login_title">Parking Management</string>
     <string name="login">Login</string>
     <string name="username">Username</string>
@@ -10,12 +10,12 @@
     <string name="vehicle_out">VEHICLE OUT</string>
     <string name="report">REPORT</string>
     <string name="sign_up">SIGN UP</string>
-    <string name="create_new_account_label">CREATE NEW ACCOUNT</string>
+    <string name="create_new_account_label">CREATE</string>
     <string name="account_information_label">ACCOUNT INFORMATION</string>
     <string name="confirm_password_label">Confirm Password</string>
     <string name="name_label">Name</string>
-    <string name="dob_label">Date Of Birth</string>
-    <string name="email_label">EMail</string>
+    <string name="dob_label">Date of Birth</string>
+    <string name="email_label">Email</string>
     <string name="phone_number_label">Phone Number</string>
     <string name="login_hint">Please enter your username/password</string>
     <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
@@ -25,9 +25,56 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="logout">LOGOUT</string>
+    <string name="repassword">Confirm Password</string>
+    <string name="edit">edit</string>
+    <string name="brand_hint">Brand (Toyota, Hyundai,…)</string>
+    <string name="seats">Seats (4, 5, 7, …)</string>
+    <string name="colors">Colors (black, white, red, …)</string>
+    <string name="plate">Plate Number (30H - 12345,…)</string>
+    <string name="checkin_time">Checkin time</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="complete">Complete</string>
+    <string name="checkin_complete">Checkin complete</string>
+    <string name="checkout_complete">Checkout complete</string>
+    <string name="checkout_time">Checkout time</string>
+    <string name="back">go back</string>
+    <string-array name="brand_array">
+        <item>Toyota</item>
+        <item>Volkswagen </item>
+        <item>Ford </item>
+        <item>Honda </item>
+        <item>Mazda</item>
+        <item>Nissan</item>
+        <item>Hyundai</item>
+        <item>Audi</item>
+        <item>Mercedes</item>
+        <item>Ferrari</item>
+        <item>Suzuki</item>
+        <item>Bentley</item>
+        <item>Roll Royce</item>
+    </string-array>
+    <string-array name="seat_array">
+        <item>4</item>
+        <item>5</item>
+        <item>7</item>
+        <item>12</item>
+        <item>16</item>
+    </string-array>
+    <string-array name="color_array">
+        <item>Red</item>
+        <item>Black</item>
+        <item>White</item>
+        <item>Yellow</item>
+        <item>Blue</item>
+        <item>Gray</item>
+        <item>Green</item>
+        <item>Orange</item>
+        <item>Golden</item>
+    </string-array>
 </resources>
+

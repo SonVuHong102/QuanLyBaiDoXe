@@ -2,210 +2,282 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".AccountActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_view"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/mainTitle"
+        style="@style/AppTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/layoutPadding"
+        android:text="@string/account_information_label"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/layoutPadding"
+        android:alpha="0.8"
+        android:background="@drawable/rounded_corner_top_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainTitle" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/button_area"
+        app:layout_constraintTop_toTopOf="@id/contentView">
 
         <LinearLayout
+            android:id="@+id/contentLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/SuffixTextField">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/suffixImageHeight"
+                    android:layout_marginStart="@dimen/prefixMargin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_username" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppOutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/username">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_username"
+                        style="@style/AppEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/SuffixTextField">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/suffixImageHeight"
+                    android:layout_marginStart="@dimen/prefixMargin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_password" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppOutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:passwordToggleEnabled="true"
+                    android:hint="@string/password">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_password"
+                        style="@style/AppEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/repassword_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/SuffixTextField">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/suffixImageHeight"
+                    android:layout_marginStart="@dimen/prefixMargin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_password" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppOutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:passwordToggleEnabled="true"
+                    android:hint="@string/repassword">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_repassword"
+                        style="@style/AppEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
             <TextView
-                android:textSize="@dimen/mainTitleTextSize"
-                android:padding="@dimen/mainTitlePadding"
+                android:id="@+id/errorText"
+                style="@style/AppErrorText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/account_information_label" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:layout_margin="@dimen/layoutMargin"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/prefixMargin"
-                    android:scaleType="fitCenter"
-                    tools:src="@tools:sample/avatars" />
-
-                <EditText
-                    android:id="@+id/text_username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/editTextMargin"
-                    android:height="@dimen/editTextHeight"
-                    android:hint="@string/username" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/layoutMargin"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/prefixMargin"
-                    android:scaleType="fitCenter"
-                    tools:src="@tools:sample/avatars" />
-
-                <EditText
-                    android:id="@+id/text_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/editTextMargin"
-                    android:height="@dimen/editTextHeight"
-                    android:hint="@string/password"
-                    android:inputType="textPassword" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/layoutMargin"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/prefixMargin"
-                    android:scaleType="fitCenter"
-                    tools:src="@tools:sample/avatars" />
-
-                <EditText
-                    android:id="@+id/text_repassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/editTextMargin"
-                    android:height="@dimen/editTextHeight"
-                    android:hint="@string/confirm_password_label"
-                    android:inputType="textPassword" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/label_error"
-                android:textSize="@dimen/errorTextSize"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#FF0000"
                 tools:text="sample error text" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/layoutMargin"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                style="@style/SuffixTextField">
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/suffixImageHeight"
                     android:layout_marginStart="@dimen/prefixMargin"
                     android:scaleType="fitCenter"
-                    tools:src="@tools:sample/avatars" />
+                    android:src="@drawable/icon_name" />
 
-                <EditText
-                    android:id="@+id/text_name"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppOutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/editTextMargin"
-                    android:height="@dimen/editTextHeight"
-                    android:hint="@string/name_label" />
-            </LinearLayout>
+                    android:hint="@string/name_label">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_name"
+                        style="@style/AppEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/layoutMargin"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                style="@style/SuffixTextField">
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/suffixImageHeight"
                     android:layout_marginStart="@dimen/prefixMargin"
                     android:scaleType="fitCenter"
-                    tools:src="@tools:sample/avatars" />
+                    android:src="@drawable/icon_birthday" />
 
-                <EditText
-                    android:id="@+id/text_dob"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppOutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/editTextMargin"
-                    android:height="@dimen/editTextHeight"
-                    android:hint="@string/dob_label" />
-            </LinearLayout>
+                    android:hint="@string/dob_label">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_dob"
+                        style="@style/AppEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="date" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/layoutMargin"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                style="@style/SuffixTextField">
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/suffixImageHeight"
                     android:layout_marginStart="@dimen/prefixMargin"
                     android:scaleType="fitCenter"
-                    tools:src="@tools:sample/avatars" />
+                    android:src="@drawable/icon_phone" />
 
-                <EditText
-                    android:id="@+id/text_phone"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppOutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/editTextMargin"
-                    android:height="@dimen/editTextHeight"
-                    android:hint="@string/email_label" />
-            </LinearLayout>
+                    android:hint="@string/phone_number_label">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_phone"
+                        style="@style/AppEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/layoutMargin"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                style="@style/SuffixTextField">
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/suffixImageHeight"
                     android:layout_marginStart="@dimen/prefixMargin"
                     android:scaleType="fitCenter"
-                    tools:src="@tools:sample/avatars" />
+                    android:src="@drawable/icon_email" />
 
-                <EditText
-                    android:id="@+id/text_email"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppOutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/editTextMargin"
-                    android:height="@dimen/editTextHeight"
-                    android:hint="@string/phone_number_label" />
-            </LinearLayout>
+                    android:hint="@string/email_label">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_email"
+                        style="@style/AppEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/button"
+    <LinearLayout
+        android:id="@+id/button_area"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_margin="@dimen/layoutPadding"
-        android:text="@string/sign_up"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/layoutPadding"
+        android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" >
+        <Button
+            android:id="@+id/button_edit_account"
+            style="@style/AppOutlinedButton"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_marginEnd="@dimen/layoutMargin"
+            android:text="@string/edit"/>
+        <Button
+            android:visibility="gone"
+            android:id="@+id/button_create_account"
+            style="@style/AppOutlinedButton"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/layoutMargin"
+            android:text="@string/create_new_account_label"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+
+    <include
+        android:id="@+id/loadingView"
+        layout="@layout/loading_screen" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

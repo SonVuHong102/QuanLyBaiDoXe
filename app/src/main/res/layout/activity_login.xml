@@ -50,8 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/layoutMargin"
-                android:gravity="center"
-                android:orientation="horizontal">
+                style="@style/SuffixTextField">
 
                 <ImageView
                     android:layout_width="@dimen/suffixImageWidth"
@@ -80,8 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/layoutMargin"
-                android:gravity="center"
-                android:orientation="horizontal">
+                style="@style/SuffixTextField" >
 
                 <ImageView
                     android:layout_width="@dimen/suffixImageWidth"
