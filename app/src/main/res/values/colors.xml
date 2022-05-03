@@ -9,4 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
     <color name="light_black">#FF616161</color>
+    <color name="transparent">#00000000</color>
+    <color name="gradient_start_color">#FF1A1853</color>
+    <color name="gradient_middle_color">#FF1964A5</color>
+    <color name="gradient_end_color">#FF0078A3</color>
+    <color name="green">#4CAF50</color>
 </resources>

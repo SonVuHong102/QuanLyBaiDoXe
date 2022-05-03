@@ -1,6 +1,8 @@
 package com.zagon102.quanlybaidoxe
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
@@ -9,16 +11,17 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.textfield.TextInputEditText
 import java.util.*
 import kotlin.concurrent.schedule
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var usernameText: TextInputEditText
-    lateinit var passwordText: TextInputEditText
-    lateinit var errorText: TextView
-    lateinit var loginButton: Button
+    private lateinit var usernameText: TextInputEditText
+    private lateinit var passwordText: TextInputEditText
+    private lateinit var errorText: TextView
+    private lateinit var loginButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        hideButton()
         usernameText = findViewById(R.id.text_username)
         passwordText = findViewById(R.id.text_password)
         errorText = findViewById(R.id.errorText)
@@ -62,6 +66,4 @@ class LoginActivity : AppCompatActivity() {
     private fun validateInput(): Boolean {
         return usernameText.text?.isNotBlank() ?: false && passwordText.text?.isNotBlank() ?: false
     }
-
-
 }

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/mainView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mainView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    tools:context=".MenuActivity">
 
         <ImageView
             android:id="@+id/imageView"
@@ -26,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent"
             style="@style/AppTitle"
             android:textColor="@color/white"
-            android:textSize="30sp"/>
+            />
 
         <View
             android:id="@+id/contentView"
@@ -42,7 +39,7 @@
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:padding="@dimen/layoutPadding"
+            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="@id/contentView">
 
@@ -50,86 +47,143 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:padding="@dimen/layoutPadding"
                 android:orientation="vertical"
                 tools:context=".LoginActivity">
-
-
                 <LinearLayout
+                    android:id="@+id/account_button"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/layoutMargin"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/suffixImageWidth"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/prefixMargin"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/icon_username" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/AppOutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/username">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_username"
-                            style="@style/AppEditText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:imeOptions="actionNext"
-                            android:inputType="text" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/layoutMargin"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/suffixImageWidth"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/prefixMargin"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/icon_password" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/AppOutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/password"
-                        app:passwordToggleEnabled="true">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_password"
-                            style="@style/AppEditText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:imeOptions="actionDone"
-                            android:inputType="textPassword" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/errorText"
-                    style="@style/AppErrorText"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/layoutPadding"
-                    tools:text="sample error text" />
+                    android:layout_marginBottom="@dimen/layoutPadding"
+                    android:gravity="center"
+                    android:background="@drawable/rounded_corner_button"
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/button_login"
-                    style="@style/AppOutlinedButton"
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="@dimen/prefixMargin"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/icon_account" />
+
+                    <TextView
+                        android:text="@string/account"
+                        style="@style/AppTitle"
+                        android:textColor="@color/gradient_end_color"
+                        android:textSize="35sp"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/report_button"
                     android:layout_width="match_parent"
-                    android:layout_margin="@dimen/layoutPadding"
-                    android:text="@string/login" />
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/layoutPadding"
+                    android:layout_marginBottom="@dimen/layoutPadding"
+                    android:gravity="center"
+                    android:background="@drawable/rounded_corner_button"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="@dimen/prefixMargin"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/icon_report" />
+
+                    <TextView
+                        android:text="@string/report"
+                        style="@style/AppTitle"
+                        android:textSize="35sp"
+                        android:textColor="@color/gradient_end_color"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/vehicle_in_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/layoutPadding"
+                    android:layout_marginBottom="@dimen/layoutPadding"
+                    android:gravity="center"
+                    android:background="@drawable/rounded_corner_button"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="@dimen/prefixMargin"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/icon_parking" />
+
+                      <TextView
+                          android:text="@string/vehicle_in"
+                          style="@style/AppTitle"
+                          android:textSize="35sp"
+                          android:textColor="@color/green"
+                          android:layout_marginStart="@dimen/layoutMargin"
+                          android:fontFamily="sans-serif-medium"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/vehicle_out_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/layoutPadding"
+                    android:layout_marginBottom="@dimen/layoutPadding"
+                    android:gravity="center"
+                    android:background="@drawable/rounded_corner_button"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:text="@string/vehicle_out"
+                        style="@style/AppTitle"
+                        android:textSize="35sp"
+                        android:textColor="@color/green"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_marginStart="@dimen/prefixMargin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="@dimen/layoutMargin"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/icon_vehicle_out" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/logout_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/layoutPadding"
+                    android:gravity="center"
+                    android:background="@drawable/rounded_corner_button"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="@dimen/prefixMargin"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/icon_logout" />
+
+                    <TextView
+                        android:text="@string/logout"
+                        style="@style/AppTitle"
+                        android:textSize="35sp"
+                        android:textColor="@color/red"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
 
             </LinearLayout>
         </ScrollView>
@@ -137,9 +191,4 @@
             android:id="@+id/loadingView"
             layout="@layout/loading_screen"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"/>
-</androidx.drawerlayout.widget.DrawerLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

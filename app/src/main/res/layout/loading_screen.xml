@@ -10,7 +10,6 @@
         android:id="@+id/loadingBackground"
         android:background="@color/white"
         android:alpha="0.5"
-        android:clickable="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     <ProgressBar
