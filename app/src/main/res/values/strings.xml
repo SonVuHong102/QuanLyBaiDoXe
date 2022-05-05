@@ -17,7 +17,7 @@
     <string name="dob_label">Date of Birth</string>
     <string name="email_label">Email</string>
     <string name="phone_number_label">Phone Number</string>
-    <string name="login_hint">Please enter your username/password</string>
+    <string name="login_hint">Wrong username/password</string>
     <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -35,14 +35,18 @@
     <string name="seats">Seats (4, 5, 7, …)</string>
     <string name="colors">Colors (black, white, red, …)</string>
     <string name="plate">Plate Number (30H - 12345,…)</string>
-    <string name="checkin_time">Checkin time</string>
+    <string name="checkin_date">Checkin date</string>
+    <string name="checkin">Checkin</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
     <string name="complete">Complete</string>
     <string name="checkin_complete">Checkin complete</string>
     <string name="checkout_complete">Checkout complete</string>
-    <string name="checkout_time">Checkout time</string>
-    <string name="back">go back</string>
+    <string name="checkout_date">Checkout date</string>
+    <string name="back">back</string>
+    <string name="checkout">Checkout</string>
+    <string name="save">Save</string>
+    <string name="password_mismatch">Password mismatch</string>
     <string-array name="brand_array">
         <item>Toyota</item>
         <item>Volkswagen </item>

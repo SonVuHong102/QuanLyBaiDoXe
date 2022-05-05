@@ -50,7 +50,9 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun goToAccount() {
-        startActivity(Intent(this,AccountActivity::class.java))
+        val intent = Intent(this,AccountActivity::class.java)
+        intent.putExtra(Constants.TYPE,Constants.INFO)
+        startActivity(intent)
     }
 
     private fun goToReport() {
@@ -68,6 +70,7 @@ class MenuActivity : AppCompatActivity() {
     private fun logout() {
         val intent = Intent(this,LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        UserInfoModule.user = null
         finish()
         startActivity(intent)
     }

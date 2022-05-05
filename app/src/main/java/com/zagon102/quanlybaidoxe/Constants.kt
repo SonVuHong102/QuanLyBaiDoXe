@@ -9,6 +9,11 @@ class Constants {
         val INFO = "INFO"
         val CREATE = "CREATE"
         val EDIT = "EDIT"
-
+        val VEHICLE_CHECK = "VEHICLE_CHECK"
+        val BUNDLE = "BUNDLE"
+        val price = 50000
+        val PENDING = "0"
+        val DONE = "1"
+        val USERNAME = "USERNAME"
     }
 }

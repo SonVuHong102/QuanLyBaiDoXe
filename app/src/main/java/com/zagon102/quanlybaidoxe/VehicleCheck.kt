@@ -1,60 +1,68 @@
 package com.zagon102.quanlybaidoxe
 
+import java.io.Serializable
+import java.time.LocalDate
 import java.time.LocalDateTime
-import java.util.*
 
 data class VehicleCheck(
+    val id: Int?,
     val brand: String,
     val seats: Int,
     val color: String,
     val plate: String,
-    val checkInTime: LocalDateTime,
-    val checkOutTime: LocalDateTime,
+    val checkInDate: LocalDate,
+    var checkOutDate: LocalDate?,
     val name: String,
-    val phone: String
-    ) {
+    val phone: String,
+    var cash: String?,
+    var done: String
+) : Serializable {
     companion object {
         fun getVehicleChecks(): List<VehicleCheck> {
             return listOf(
                 VehicleCheck(
+                    null,
                     "toyota",
                     4,
                     "red",
                     "asdf",
-                    LocalDateTime.of(2020,11,23,1,4),
-                    LocalDateTime.of(2021,11,23,1,4),
+                    LocalDate.of(2020, 11, 23),
+                    LocalDate.of(2021, 11, 23),
                     "some name",
-                    "some phone"
+                    "some phone", "", Constants.PENDING
                 ),
                 VehicleCheck(
+                    null,
                     "toyota",
                     4,
                     "red",
                     "asdf",
-                    LocalDateTime.of(2020,11,23,1,4),
-                    LocalDateTime.of(2021,11,23,1,4),
+                    LocalDate.of(2020, 11, 23),
+                    LocalDate.of(2021, 11, 23),
                     "some name",
-                    "some phone"
+                    "some phone", "", Constants.PENDING
                 ),
                 VehicleCheck(
+                    null,
                     "toyota",
                     4,
                     "red",
                     "asdf",
-                    LocalDateTime.of(2020,11,23,1,4),
-                    LocalDateTime.of(2021,11,23,1,4),
+                    LocalDate.of(2020, 11, 23),
+                    LocalDate.of(2021, 11, 23),
                     "some name",
-                    "some phone"
+                    "some phone", "", Constants.PENDING
                 ),
                 VehicleCheck(
+                    null,
                     "toyota",
                     4,
                     "red",
                     "asdf",
-                    LocalDateTime.of(2020,11,23,1,4),
-                    LocalDateTime.of(2021,11,23,1,4),
+                    LocalDate.of(2020, 11, 23),
+                    LocalDate.of(2021, 11, 23),
                     "some name",
-                    "some phone"
+                    "some phone", "", Constants.PENDING
                 ),
             )
         }

@@ -42,18 +42,18 @@
         android:layout_marginStart="@dimen/layoutPadding"
         android:layout_marginEnd="@dimen/layoutPadding"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/button_cancel"
+        app:layout_constraintBottom_toTopOf="@+id/button_back"
         app:layout_constraintTop_toTopOf="@id/contentView">
 
     </androidx.recyclerview.widget.RecyclerView>
 
 
         <Button
-            android:id="@+id/button_cancel"
+            android:id="@+id/button_back"
             style="@style/AppOutlinedButton"
             android:layout_width="match_parent"
             android:layout_margin="@dimen/layoutMargin"
-            android:text="@string/cancel"
+            android:text="@string/back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>

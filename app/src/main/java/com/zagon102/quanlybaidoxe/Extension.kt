@@ -3,11 +3,14 @@ package com.zagon102.quanlybaidoxe
 import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.children
+import java.text.DecimalFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 fun Activity.showLoading() {
     val progress = findViewById<View>(R.id.loadingView)
@@ -38,4 +41,18 @@ fun Activity.hideButton() {
         WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
     // Hide both the status bar and the navigation bar
     windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
+}
+
+fun LocalDate.toDateFormat(): String {
+    return format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+}
+
+fun Long.toCurrency(): String {
+    val dec = DecimalFormat("###,###,###")
+    return dec.format(this) + " VND"
+}
+
+fun String.toLocalDate(): LocalDate {
+    val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+    return LocalDate.parse(this, formatter)
 }
