@@ -1,13 +1,20 @@
-package com.zagon102.quanlybaidoxe
+package com.zagon102.quanlybaidoxe.presentation.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.textfield.TextInputEditText
+import com.zagon102.quanlybaidoxe.*
+import com.zagon102.quanlybaidoxe.data.DBHelper
+import com.zagon102.quanlybaidoxe.presentation.model.User
+import com.zagon102.quanlybaidoxe.presentation.module.UserInfoModule
+import com.zagon102.quanlybaidoxe.ultis.*
+import java.time.LocalDate
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var usernameText: TextInputEditText
@@ -20,10 +27,14 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        db = DBHelper(this, null)
-//        db.onUpgrade(db.writableDatabase,1,2)
-//        db.addUser(User(null,"1","1",Constants.MANAGER,"name1", LocalDateTime.now(),"0912093","some@email"))
         initViews()
+        getData()
+        db = DBHelper(this, null)
+    }
+
+    private fun getData() {
+        usernameText.setText(localStorage()?.getString(Constants.USER,""))
+        passwordText.setText(localStorage()?.getString(Constants.PASSWORD,""))
     }
 
     private fun initViews() {
@@ -71,6 +82,11 @@ class LoginActivity : AppCompatActivity() {
                     phone,
                     email
                 )
+                localStorage()?.edit()?.let {
+                    it.putString(Constants.USER,usernameText.text.toString())
+                    it.putString(Constants.PASSWORD,passwordText.text.toString())
+                    it.apply()
+                }
                 startActivity(Intent(this, MenuActivity::class.java))
                 finish()
             } else

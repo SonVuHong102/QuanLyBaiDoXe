@@ -1,9 +1,13 @@
-package com.zagon102.quanlybaidoxe
+package com.zagon102.quanlybaidoxe.presentation.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.zagon102.quanlybaidoxe.ultis.Constants
+import com.zagon102.quanlybaidoxe.R
+import com.zagon102.quanlybaidoxe.presentation.module.UserInfoModule
+import com.zagon102.quanlybaidoxe.ultis.hideButton
 
 
 class MenuActivity : AppCompatActivity() {
@@ -28,6 +32,11 @@ class MenuActivity : AppCompatActivity() {
         vehicleOutButton = findViewById(R.id.vehicle_out_button)
         logoutButton = findViewById(R.id.logout_button)
 
+        UserInfoModule.user?.let {
+            if(it.role == Constants.MANAGER)
+                reportButton.visibility = View.VISIBLE
+        }
+
         accountButton.setOnClickListener{
             goToAccount()
         }
@@ -50,27 +59,28 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun goToAccount() {
-        val intent = Intent(this,AccountActivity::class.java)
-        intent.putExtra(Constants.TYPE,Constants.INFO)
+        val intent = Intent(this, AccountActivity::class.java)
+        intent.putExtra(Constants.TYPE, Constants.INFO)
         startActivity(intent)
     }
 
     private fun goToReport() {
-        startActivity(Intent(this,ReportActivity::class.java))
+        startActivity(Intent(this, ReportActivity::class.java))
     }
 
     private fun goToVehicleIn() {
-        startActivity(Intent(this,VehicleInActivity::class.java))
+        startActivity(Intent(this, VehicleInActivity::class.java))
     }
 
     private fun goToVehicleOut() {
-        startActivity(Intent(this,VehicleOutActivity::class.java))
+        startActivity(Intent(this, VehicleOutActivity::class.java))
     }
 
     private fun logout() {
-        val intent = Intent(this,LoginActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         UserInfoModule.user = null
+        getSharedPreferences(Constants.SHARED_PREFERENCE_NAME, MODE_PRIVATE)?.edit()?.clear()?.apply()
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         finish()
         startActivity(intent)
     }

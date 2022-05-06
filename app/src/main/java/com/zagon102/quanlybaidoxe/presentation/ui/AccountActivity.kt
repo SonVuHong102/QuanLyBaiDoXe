@@ -1,4 +1,4 @@
-package com.zagon102.quanlybaidoxe
+package com.zagon102.quanlybaidoxe.presentation.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,14 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
+import com.zagon102.quanlybaidoxe.*
+import com.zagon102.quanlybaidoxe.data.DBHelper
+import com.zagon102.quanlybaidoxe.presentation.model.User
+import com.zagon102.quanlybaidoxe.presentation.module.UserInfoModule
+import com.zagon102.quanlybaidoxe.ultis.Constants
+import com.zagon102.quanlybaidoxe.ultis.hideButton
+import com.zagon102.quanlybaidoxe.ultis.toDateFormat
+import com.zagon102.quanlybaidoxe.ultis.toLocalDate
 
 class AccountActivity : AppCompatActivity() {
     private lateinit var usernameText: TextInputEditText

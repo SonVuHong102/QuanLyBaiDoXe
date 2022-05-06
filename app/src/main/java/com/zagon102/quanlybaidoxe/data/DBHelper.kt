@@ -1,10 +1,14 @@
-package com.zagon102.quanlybaidoxe
+package com.zagon102.quanlybaidoxe.data
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.zagon102.quanlybaidoxe.ultis.Constants
+import com.zagon102.quanlybaidoxe.presentation.model.VehicleCheck
+import com.zagon102.quanlybaidoxe.presentation.model.User
+import com.zagon102.quanlybaidoxe.ultis.toDateFormat
 
 class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
@@ -64,6 +68,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         values.put(CHECKIN_COL, vehicleCheck.checkInDate.toDateFormat())
         values.put(NAME_COL, vehicleCheck.name)
         values.put(PHONE_COL, vehicleCheck.phone)
+        values.put(DONE_COL,Constants.PENDING)
         val db = this.writableDatabase
         db.insert(CHECK_TABLE_NAME, null, values)
         db.close()
@@ -77,6 +82,11 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     fun getChecks(): Cursor? {
         val db = this.readableDatabase
         return db.rawQuery("SELECT * FROM $CHECK_TABLE_NAME", null)
+    }
+
+    fun getPendingChecks(): Cursor? {
+        val db = this.readableDatabase
+        return db.rawQuery("SELECT * FROM $CHECK_TABLE_NAME WHERE done = '${Constants.PENDING}'",null )
     }
 
     fun authUser(username: String, password: String): Cursor? {

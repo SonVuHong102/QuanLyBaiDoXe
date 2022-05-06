@@ -1,4 +1,4 @@
-package com.zagon102.quanlybaidoxe
+package com.zagon102.quanlybaidoxe.presentation.model
 
 import java.time.LocalDate
 import java.time.LocalDateTime

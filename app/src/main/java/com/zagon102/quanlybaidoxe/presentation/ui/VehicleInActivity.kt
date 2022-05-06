@@ -1,12 +1,21 @@
-package com.zagon102.quanlybaidoxe
+package com.zagon102.quanlybaidoxe.presentation.ui
 
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import android.view.Window
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.zagon102.quanlybaidoxe.*
+import com.zagon102.quanlybaidoxe.data.DBHelper
+import com.zagon102.quanlybaidoxe.presentation.model.VehicleCheck
+import com.zagon102.quanlybaidoxe.ultis.Constants
+import com.zagon102.quanlybaidoxe.ultis.hideButton
+import com.zagon102.quanlybaidoxe.ultis.toDateFormat
+import com.zagon102.quanlybaidoxe.ultis.toLocalDate
+import java.time.LocalDate
 import java.util.*
 
 class VehicleInActivity : AppCompatActivity() {
@@ -18,7 +27,7 @@ class VehicleInActivity : AppCompatActivity() {
     private lateinit var buttonDatepicker: ImageButton
     private lateinit var nameText: TextView
     private lateinit var phoneText: TextView
-    private lateinit var buttonCancel: Button
+    private lateinit var buttonBack: Button
     private lateinit var buttonConfirm: Button
     private lateinit var db: DBHelper
     var vehicleCheck: VehicleCheck? = null
@@ -40,7 +49,7 @@ class VehicleInActivity : AppCompatActivity() {
         buttonDatepicker = findViewById(R.id.button_datepicker)
         nameText = findViewById(R.id.text_name)
         phoneText = findViewById(R.id.text_phone)
-        buttonCancel = findViewById(R.id.button_cancel)
+        buttonBack = findViewById(R.id.button_back)
         buttonConfirm = findViewById(R.id.button_confirm)
 
         brandAutoComplete.setAdapter(
@@ -77,7 +86,8 @@ class VehicleInActivity : AppCompatActivity() {
             val month = c.get(Calendar.MONTH)
             val day = c.get(Calendar.DAY_OF_MONTH)
             val dpd = DatePickerDialog(this, { _, year, monthOfYear, dayOfMonth ->
-                checkinDateText.text = "$dayOfMonth/${monthOfYear+1}/$year"
+                val date = LocalDate.of(year,monthOfYear,dayOfMonth)
+                checkinDateText.text = date.toDateFormat()
             }, year, month, day)
             dpd.datePicker.maxDate = Date().time
             dpd.show()
@@ -99,7 +109,12 @@ class VehicleInActivity : AppCompatActivity() {
                 null,
                 Constants.PENDING
             )
+            showDialog(vehicleCheck!!)
 
+        }
+
+        buttonBack.setOnClickListener{
+            finish()
         }
     }
 
@@ -114,8 +129,10 @@ class VehicleInActivity : AppCompatActivity() {
         dialog.findViewById<TextView>(R.id.text_plate).text = vehicleCheck.plate
         dialog.findViewById<TextView>(R.id.text_checkin_date).text =
             vehicleCheck.checkInDate.toDateFormat()
+        dialog.findViewById<LinearLayout>(R.id.checkout_layout).visibility = View.GONE
         dialog.findViewById<TextView>(R.id.text_name).text = vehicleCheck.name
         dialog.findViewById<TextView>(R.id.text_phone).text = vehicleCheck.phone
+        dialog.findViewById<LinearLayout>(R.id.cash_layout).visibility = View.GONE
         val yesBtn = dialog.findViewById<Button>(R.id.button_checkout)
         yesBtn.text = getString(R.string.checkin)
         val noBtn = dialog.findViewById<Button>(R.id.button_cancel)

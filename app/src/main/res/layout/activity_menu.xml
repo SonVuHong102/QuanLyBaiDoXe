@@ -5,7 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MenuActivity">
+    tools:context=".presentation.ui.MenuActivity">
 
         <ImageView
             android:id="@+id/imageView"
@@ -48,7 +48,7 @@
                 android:gravity="center_horizontal"
                 android:padding="@dimen/layoutPadding"
                 android:orientation="vertical"
-                tools:context=".LoginActivity">
+                tools:context=".presentation.ui.LoginActivity">
                 <LinearLayout
                     android:id="@+id/account_button"
                     android:layout_width="match_parent"

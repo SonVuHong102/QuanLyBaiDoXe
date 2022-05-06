@@ -1,15 +1,18 @@
-package com.zagon102.quanlybaidoxe
+package com.zagon102.quanlybaidoxe.ultis
 
 import android.app.Activity
+import android.content.Context
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.children
+import com.zagon102.quanlybaidoxe.R
 import java.text.DecimalFormat
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 fun Activity.showLoading() {
@@ -55,4 +58,8 @@ fun Long.toCurrency(): String {
 fun String.toLocalDate(): LocalDate {
     val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
     return LocalDate.parse(this, formatter)
+}
+
+fun Context.localStorage() : SharedPreferences? {
+    return getSharedPreferences(Constants.SHARED_PREFERENCE_NAME,MODE_PRIVATE)
 }

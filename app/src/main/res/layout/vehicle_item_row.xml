@@ -142,6 +142,31 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/checkout_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layoutMargin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/suffixSmallImageHeight"
+                android:layout_height="@dimen/suffixSmallImageHeight"
+                android:layout_marginStart="@dimen/prefixMargin"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_vehicle_out" />
+
+            <TextView
+                android:id="@+id/text_checkout_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="@dimen/layoutPadding"
+                android:backgroundTint="@color/transparent"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/layoutMargin"
@@ -181,6 +206,30 @@
 
             <TextView
                 android:id="@+id/text_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/layoutPadding"
+                android:backgroundTint="@color/transparent"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cash_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layoutMargin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/suffixSmallImageHeight"
+                android:layout_height="@dimen/suffixSmallImageHeight"
+                android:layout_marginStart="@dimen/prefixMargin"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_cash" />
+
+            <TextView
+                android:id="@+id/text_cash"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/layoutPadding"

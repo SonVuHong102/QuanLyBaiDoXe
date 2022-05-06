@@ -1,4 +1,4 @@
-package com.zagon102.quanlybaidoxe
+package com.zagon102.quanlybaidoxe.ultis
 
 class Constants {
     companion object {
@@ -14,6 +14,8 @@ class Constants {
         val price = 50000
         val PENDING = "0"
         val DONE = "1"
-        val USERNAME = "USERNAME"
+        val SHARED_PREFERENCE_NAME = "SHARED_PREFERENCE_NAME"
+        val USER = "USER"
+        val PASSWORD = "PASSWORD"
     }
 }

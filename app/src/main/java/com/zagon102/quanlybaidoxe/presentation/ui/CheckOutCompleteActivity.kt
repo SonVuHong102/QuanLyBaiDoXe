@@ -1,9 +1,14 @@
-package com.zagon102.quanlybaidoxe
+package com.zagon102.quanlybaidoxe.presentation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.zagon102.quanlybaidoxe.*
+import com.zagon102.quanlybaidoxe.presentation.model.VehicleCheck
+import com.zagon102.quanlybaidoxe.ultis.Constants
+import com.zagon102.quanlybaidoxe.ultis.toCurrency
+import com.zagon102.quanlybaidoxe.ultis.toDateFormat
 import java.time.temporal.ChronoUnit
 
 class CheckOutCompleteActivity : AppCompatActivity() {
@@ -48,8 +53,7 @@ class CheckOutCompleteActivity : AppCompatActivity() {
                 checkoutText.text = it.checkOutDate!!.toDateFormat()
                 nameText.text = it.name
                 phoneText.text = it.phone
-                val cash = ChronoUnit.DAYS.between(it.checkInDate, it.checkOutDate)*Constants.price
-                cashText.text = cash.toCurrency()
+                cashText.text = it.cash!!.toCurrency()
             }
         }
     }
