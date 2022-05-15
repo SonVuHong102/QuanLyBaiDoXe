@@ -21,20 +21,32 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var passwordText: TextInputEditText
     private lateinit var errorText: TextView
     private lateinit var loginButton: Button
+    private lateinit var signupButton: Button
     lateinit var db: DBHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        initViews()
-        getData()
         db = DBHelper(this, null)
+        initViews()
+
+
     }
 
     private fun getData() {
-        usernameText.setText(localStorage()?.getString(Constants.USER,""))
-        passwordText.setText(localStorage()?.getString(Constants.PASSWORD,""))
+        localStorage()?.let {
+            usernameText.setText(it.getString(Constants.USER,""))
+            passwordText.setText(it.getString(Constants.PASSWORD,""))
+            loginButton.performClick()
+        }
+//        usernameText.setText(localStorage()?.getString(Constants.USER,""))
+//        passwordText.setText(localStorage()?.getString(Constants.PASSWORD,""))
+    }
+
+    override fun onResume() {
+        getData()
+        super.onResume()
     }
 
     private fun initViews() {
@@ -43,6 +55,7 @@ class LoginActivity : AppCompatActivity() {
         passwordText = findViewById(R.id.text_password)
         errorText = findViewById(R.id.errorText)
         loginButton = findViewById(R.id.button_login)
+        signupButton = findViewById(R.id.button_signup)
 
         usernameText.addTextChangedListener {
             errorText.text = ""
@@ -82,16 +95,19 @@ class LoginActivity : AppCompatActivity() {
                     phone,
                     email
                 )
-                localStorage()?.edit()?.let {
-                    it.putString(Constants.USER,usernameText.text.toString())
-                    it.putString(Constants.PASSWORD,passwordText.text.toString())
-                    it.apply()
-                }
+                saveUserToLocal()
                 startActivity(Intent(this, MenuActivity::class.java))
                 finish()
-            } else
+            } else if(UserInfoModule.user != null) {
                 errorText.text = getString(R.string.login_hint)
+            }
             hideLoading()
+        }
+        signupButton.setOnClickListener{
+            val intent = Intent(this, AccountActivity::class.java)
+            intent.putExtra(Constants.ROLE,Constants.CUSTOMER)
+            intent.putExtra(Constants.TYPE,Constants.CREATE)
+            startActivity(intent)
         }
     }
 

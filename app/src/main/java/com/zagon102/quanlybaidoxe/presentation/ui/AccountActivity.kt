@@ -7,16 +7,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.zagon102.quanlybaidoxe.*
 import com.zagon102.quanlybaidoxe.data.DBHelper
 import com.zagon102.quanlybaidoxe.presentation.model.User
 import com.zagon102.quanlybaidoxe.presentation.module.UserInfoModule
-import com.zagon102.quanlybaidoxe.ultis.Constants
-import com.zagon102.quanlybaidoxe.ultis.hideButton
-import com.zagon102.quanlybaidoxe.ultis.toDateFormat
-import com.zagon102.quanlybaidoxe.ultis.toLocalDate
+import com.zagon102.quanlybaidoxe.ultis.*
 
 class AccountActivity : AppCompatActivity() {
     private lateinit var usernameText: TextInputEditText
@@ -32,7 +30,7 @@ class AccountActivity : AppCompatActivity() {
 
     private lateinit var db: DBHelper
 
-    private var role = Constants.EMPLOYEE
+    private var role = Constants.CUSTOMER
     private var type = Constants.INFO
 
 
@@ -47,7 +45,7 @@ class AccountActivity : AppCompatActivity() {
     }
 
     private fun getData() {
-        role = UserInfoModule.user?.role ?: Constants.EMPLOYEE
+        role = UserInfoModule.user?.role ?: Constants.CUSTOMER
         type = intent.getStringExtra(Constants.TYPE) ?: Constants.INFO
     }
 
@@ -91,21 +89,25 @@ class AccountActivity : AppCompatActivity() {
                     errorText.text = getString(R.string.password_mismatch)
                 }
                 Constants.CREATE -> if(validateUsername() && validatePassword()) {
-                    db.addUser(
-                        User(
-                            null,
-                            usernameText.text.toString(),
-                            passwordText.text.toString(),
-                            Constants.EMPLOYEE,
-                            nameText.text.toString(),
-                            dobText.text.toString().toLocalDate(),
-                            phoneText.text.toString(),
-                            emailText.text.toString()
-                        )
+                    val user = User(
+                        null,
+                        usernameText.text.toString(),
+                        passwordText.text.toString(),
+                        role,
+                        nameText.text.toString(),
+                        dobText.text.toString().toLocalDate(),
+                        phoneText.text.toString(),
+                        emailText.text.toString()
                     )
+                    db.addUser(user)
+                    if(role == Constants.CUSTOMER) {
+                        UserInfoModule.user = user
+                        saveUserToLocal()
+                    }
                     finish()
                 } else {
-                    errorText.text = "Username is exist or Passwords mismatch"
+                    errorText.text = getString(R.string.create_user_error)
+                    Toast.makeText(this,getString(R.string.create_user_error),Toast.LENGTH_SHORT).show()
                 }
                 Constants.INFO -> goToEditAccount()
             }

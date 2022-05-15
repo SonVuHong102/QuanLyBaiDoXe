@@ -3,6 +3,7 @@ package com.zagon102.quanlybaidoxe.ultis
 class Constants {
     companion object {
         val ROLE = "ROLE"
+        val CUSTOMER = "CUSTOMER"
         val EMPLOYEE = "EMPLOYEE"
         val MANAGER = "MANAGER"
         val TYPE = "TYPE"

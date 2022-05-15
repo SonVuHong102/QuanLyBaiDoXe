@@ -47,6 +47,7 @@
     <string name="checkout">Checkout</string>
     <string name="save">Save</string>
     <string name="password_mismatch">Password mismatch</string>
+    <string name="create_user_error">Username is existing or Passwords mismatch</string>
     <string-array name="brand_array">
         <item>Toyota</item>
         <item>Volkswagen </item>

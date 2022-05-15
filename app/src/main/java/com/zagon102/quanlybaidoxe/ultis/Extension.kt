@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.children
 import com.zagon102.quanlybaidoxe.R
+import com.zagon102.quanlybaidoxe.presentation.module.UserInfoModule
 import java.text.DecimalFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -62,4 +63,12 @@ fun String.toLocalDate(): LocalDate {
 
 fun Context.localStorage() : SharedPreferences? {
     return getSharedPreferences(Constants.SHARED_PREFERENCE_NAME,MODE_PRIVATE)
+}
+
+fun Context.saveUserToLocal() {
+    localStorage()?.edit()?.let {
+        it.putString(Constants.USER,UserInfoModule.user?.username ?: "")
+        it.putString(Constants.PASSWORD,UserInfoModule.user?.password ?: "")
+        it.apply()
+    }
 }
