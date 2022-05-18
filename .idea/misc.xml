@@ -14,6 +14,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_check_in_complete.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_check_in_out_complete.xml" value="0.202991452991453" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_check_out_complete.xml" value="0.202991452991453" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_create_new_vehicle.xml" value="0.202991452991453" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_edit.xml" value="0.19145299145299147" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_login.xml" value="0.32576985413290116" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_main.xml" value="0.24739583333333334" />
@@ -21,7 +22,9 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.202991452991453" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_report.xml" value="0.202991452991453" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_sign_up.xml" value="0.24739583333333334" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_vehicle_in.xml" value="0.19145299145299147" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_vehicle_in.xml" value="0.2" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_vehicle_in_custom.xml" value="0.202991452991453" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_vehicle_management.xml" value="0.202991452991453" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_vehicle_out.xml" value="0.202991452991453" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/activity_weather.xml" value="0.2199074074074074" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/app_bar_navigation_drawer.xml" value="0.202991452991453" />
@@ -33,6 +36,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/nav_header_navigation_drawer.xml" value="0.202991452991453" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/nav_main.xml" value="0.202991452991453" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/rounded_corner.xml" value="0.202991452991453" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/vehicle_check_item_row.xml" value="0.202991452991453" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/vehicle_in_confirm.xml" value="0.202991452991453" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/vehicle_in_input.xml" value="0.202991452991453" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/QuanLyBaiDoXe/app/src/main/res/layout/vehicle_item_row.xml" value="0.202991452991453" />
