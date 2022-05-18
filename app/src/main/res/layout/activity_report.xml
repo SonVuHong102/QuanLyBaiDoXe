@@ -34,18 +34,43 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mainTitle" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/vehicle_check_list"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/layoutPadding"
-        android:layout_marginStart="@dimen/layoutPadding"
-        android:layout_marginEnd="@dimen/layoutPadding"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/button_back"
-        app:layout_constraintTop_toTopOf="@id/contentView">
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="@id/contentView"
+        app:layout_constraintBottom_toTopOf="@+id/button_back">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_username_container"
+            style="@style/AppOutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layoutPadding"
+            android:hint="@string/search_by_phone"
+            >
 
-    </androidx.recyclerview.widget.RecyclerView>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_search"
+                style="@style/AppEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="numberSigned" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/vehicle_check_list"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/layoutPadding"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+
 
 
     <Button

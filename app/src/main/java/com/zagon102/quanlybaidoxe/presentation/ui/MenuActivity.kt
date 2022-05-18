@@ -16,6 +16,7 @@ class MenuActivity : AppCompatActivity() {
     private lateinit var vehicleInButton: View
     private lateinit var vehicleOutButton: View
     private lateinit var logoutButton: View
+    private lateinit var vehicleManagementButton: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +31,18 @@ class MenuActivity : AppCompatActivity() {
         vehicleInButton = findViewById(R.id.vehicle_in_button)
         vehicleOutButton = findViewById(R.id.vehicle_out_button)
         logoutButton = findViewById(R.id.logout_button)
+        vehicleManagementButton = findViewById(R.id.vehicle_management_button)
 
         UserInfoModule.user?.let {
-            if(it.role == Constants.MANAGER)
-                reportButton.visibility = View.VISIBLE
+            if(it.role == Constants.CUSTOMER) {
+                vehicleInButton.visibility = View.GONE
+                vehicleOutButton.visibility = View.GONE
+            } else {
+                vehicleManagementButton.visibility = View.GONE
+                if(it.role == Constants.EMPLOYEE) {
+                    reportButton.visibility = View.GONE
+                }
+            }
         }
 
         accountButton.setOnClickListener{
@@ -50,6 +59,10 @@ class MenuActivity : AppCompatActivity() {
 
         vehicleOutButton.setOnClickListener{
             goToVehicleOut()
+        }
+
+        vehicleManagementButton.setOnClickListener{
+            goToVehicleManagement()
         }
 
         logoutButton.setOnClickListener{
@@ -73,6 +86,10 @@ class MenuActivity : AppCompatActivity() {
 
     private fun goToVehicleOut() {
         startActivity(Intent(this, VehicleOutActivity::class.java))
+    }
+
+    private fun goToVehicleManagement() {
+        startActivity(Intent(this, VehicleManagementActivity::class.java))
     }
 
     private fun logout() {

@@ -2,7 +2,6 @@ package com.zagon102.quanlybaidoxe.presentation.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.TextView
@@ -14,7 +13,6 @@ import com.zagon102.quanlybaidoxe.data.DBHelper
 import com.zagon102.quanlybaidoxe.presentation.model.User
 import com.zagon102.quanlybaidoxe.presentation.module.UserInfoModule
 import com.zagon102.quanlybaidoxe.ultis.*
-import java.time.LocalDate
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var usernameText: TextInputEditText
@@ -27,11 +25,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
         db = DBHelper(this, null)
         initViews()
-
-
     }
 
     private fun getData() {
@@ -40,8 +35,6 @@ class LoginActivity : AppCompatActivity() {
             passwordText.setText(it.getString(Constants.PASSWORD,""))
             loginButton.performClick()
         }
-//        usernameText.setText(localStorage()?.getString(Constants.USER,""))
-//        passwordText.setText(localStorage()?.getString(Constants.PASSWORD,""))
     }
 
     override fun onResume() {
@@ -75,7 +68,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginButton.setOnClickListener {
-            showLoading()
             if (validateInput() && authUser()) {
                 val cursor = db.getUser(usernameText.text.toString())
                 cursor!!.moveToFirst()
@@ -98,10 +90,9 @@ class LoginActivity : AppCompatActivity() {
                 saveUserToLocal()
                 startActivity(Intent(this, MenuActivity::class.java))
                 finish()
-            } else if(UserInfoModule.user != null) {
+            } else {
                 errorText.text = getString(R.string.login_hint)
             }
-            hideLoading()
         }
         signupButton.setOnClickListener{
             val intent = Intent(this, AccountActivity::class.java)

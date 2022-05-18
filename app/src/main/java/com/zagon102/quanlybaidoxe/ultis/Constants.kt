@@ -18,5 +18,8 @@ class Constants {
         val SHARED_PREFERENCE_NAME = "SHARED_PREFERENCE_NAME"
         val USER = "USER"
         val PASSWORD = "PASSWORD"
+        val parkingLocations = listOf(
+            "HVCNBCVT","DHKT","HVYDCT","DHHN"
+        )
     }
 }

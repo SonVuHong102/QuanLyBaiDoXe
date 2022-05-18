@@ -57,14 +57,13 @@
                     android:layout_height="@dimen/suffixImageHeight"
                     android:layout_marginStart="@dimen/prefixMargin"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/icon_star" />
+                    android:src="@drawable/icon_location" />
 
-                <AutoCompleteTextView
-                    android:id="@+id/auto_complete_brand"
-                    android:hint="@string/brand_hint"
+                <Spinner
+                    android:id="@+id/location_spinner"
                     style="@style/AppAutoCompleteText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="match_parent"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,56 +76,44 @@
                     android:layout_height="@dimen/suffixImageHeight"
                     android:layout_marginStart="@dimen/prefixMargin"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/icon_seat" />
-
-                <AutoCompleteTextView
-                    android:id="@+id/auto_complete_seat"
-                    android:hint="@string/seats"
-                    style="@style/AppAutoCompleteText"
-                    android:maxLength="2"
-                    android:inputType="number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/suffixImageHeight"
-                    android:layout_marginStart="@dimen/prefixMargin"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_colors" />
-
-                <AutoCompleteTextView
-                    android:id="@+id/auto_complete_color"
-                    android:hint="@string/colors"
-                    style="@style/AppAutoCompleteText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/suffixImageHeight"
-                    android:layout_marginStart="@dimen/prefixMargin"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_plate" />
+                    android:src="@drawable/icon_phone" />
 
                 <EditText
-                    android:id="@+id/text_plate"
-                    android:hint="@string/plate"
+                    android:id="@+id/text_phone"
+                    android:hint="@string/phone_number_label"
+                    style="@style/AppAutoCompleteText"
+                    android:maxLength="15"
+                    android:layout_weight="3"
+                    android:imeOptions="actionDone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <ImageButton
+                    android:id="@+id/button_phone"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:scaleType="fitCenter"
+                    android:backgroundTint="@color/transparent"
+                    android:src="@drawable/icon_search"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/suffixImageHeight"
+                    android:layout_marginStart="@dimen/prefixMargin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_vehicle_management" />
+
+                <Spinner
+                    android:id="@+id/vehicle_spinner"
                     style="@style/AppAutoCompleteText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="match_parent"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -159,51 +146,16 @@
                     android:layout_margin="5dp"
                     android:src="@drawable/icon_datepicker"/>
             </LinearLayout>
-            <LinearLayout
+            <Button
+                android:id="@+id/button_confirm"
+                style="@style/AppOutlinedButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center">
+                android:layout_height="@dimen/buttonHeight"
+                android:layout_margin="@dimen/layoutPadding"
+                android:text="@string/confirm"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/suffixImageHeight"
-                    android:layout_marginStart="@dimen/prefixMargin"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_username" />
-
-                <EditText
-                    android:id="@+id/text_name"
-                    android:hint="@string/name_label"
-                    style="@style/AppAutoCompleteText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/suffixImageHeight"
-                    android:layout_marginStart="@dimen/prefixMargin"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_phone" />
-
-                <EditText
-                    android:id="@+id/text_phone"
-                    android:hint="@string/phone_number_label"
-                    style="@style/AppAutoCompleteText"
-                    android:maxLength="15"
-                    android:imeOptions="actionDone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
     <LinearLayout
         android:id="@+id/button_area"
         android:layout_width="match_parent"
@@ -222,12 +174,12 @@
             android:text="@string/back"
             android:layout_weight="1"/>
         <Button
-            android:id="@+id/button_confirm"
+            android:id="@+id/button_newcustomer"
             style="@style/AppOutlinedButton"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_marginStart="@dimen/layoutMargin"
-            android:text="@string/confirm"/>
+            android:text="@string/new_label"/>
     </LinearLayout>
 
 

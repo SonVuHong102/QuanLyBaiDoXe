@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zagon102.quanlybaidoxe.*
 import com.zagon102.quanlybaidoxe.data.DBHelper
 import com.zagon102.quanlybaidoxe.presentation.model.VehicleCheck
-import com.zagon102.quanlybaidoxe.presentation.ui.adapter.VehicleListAdapter
+import com.zagon102.quanlybaidoxe.presentation.ui.adapter.VehicleCheckListAdapter
 import com.zagon102.quanlybaidoxe.ultis.Constants
 import com.zagon102.quanlybaidoxe.ultis.toCurrency
 import com.zagon102.quanlybaidoxe.ultis.toDateFormat
@@ -24,7 +24,7 @@ import java.time.temporal.ChronoUnit
 class VehicleOutActivity : AppCompatActivity() {
     private lateinit var vehicleCheckListView: RecyclerView
     private lateinit var backButton: Button
-    private lateinit var adapter: VehicleListAdapter
+    private lateinit var adapter: VehicleCheckListAdapter
     private lateinit var vehicleCheckList: MutableList<VehicleCheck>
     private var db: DBHelper? = null
     private var vehicleCheck: VehicleCheck? = null
@@ -47,7 +47,7 @@ class VehicleOutActivity : AppCompatActivity() {
         }
         vehicleCheckListView = findViewById(R.id.vehicle_check_list)
         vehicleCheckList = mutableListOf()
-        adapter = VehicleListAdapter(vehicleCheckList,false,onItemClick)
+        adapter = VehicleCheckListAdapter(vehicleCheckList,false,onItemClick)
         vehicleCheckListView.adapter = adapter
     }
 
@@ -63,6 +63,7 @@ class VehicleOutActivity : AppCompatActivity() {
                         cursor.getInt(cursor.getColumnIndexOrThrow(DBHelper.SEATS_COL)),
                         cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.COLOR_COL)),
                         cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.PLATE_COL)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.LOCATION_COL)),
                         cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.CHECKIN_COL)).toLocalDate(),
                         null,
                         cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.NAME_COL)),
@@ -84,7 +85,7 @@ class VehicleOutActivity : AppCompatActivity() {
     private fun showDialog(vehicleCheck: VehicleCheck) {
         this.vehicleCheck = vehicleCheck
         this.vehicleCheck!!.checkOutDate = LocalDate.now()
-        this.vehicleCheck!!.cash = (ChronoUnit.DAYS.between(vehicleCheck.checkInDate, LocalDate.now())* Constants.price)
+        this.vehicleCheck!!.cash = ((ChronoUnit.DAYS.between(vehicleCheck.checkInDate, LocalDate.now())+1)* Constants.price)
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
@@ -93,6 +94,7 @@ class VehicleOutActivity : AppCompatActivity() {
         dialog.findViewById<TextView>(R.id.text_seats).text = this.vehicleCheck!!.seats.toString()
         dialog.findViewById<TextView>(R.id.text_color).text = this.vehicleCheck!!.color
         dialog.findViewById<TextView>(R.id.text_plate).text = this.vehicleCheck!!.plate
+        dialog.findViewById<TextView>(R.id.text_location).text = this.vehicleCheck!!.location
         dialog.findViewById<TextView>(R.id.text_checkin_date).text = this.vehicleCheck!!.checkInDate.toDateFormat()
         dialog.findViewById<TextView>(R.id.text_checkout_date).text = this.vehicleCheck!!.checkOutDate!!.toDateFormat()
         dialog.findViewById<TextView>(R.id.text_name).text = this.vehicleCheck!!.name

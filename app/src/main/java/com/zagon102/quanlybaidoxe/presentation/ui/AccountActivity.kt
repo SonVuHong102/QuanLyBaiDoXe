@@ -1,13 +1,12 @@
 package com.zagon102.quanlybaidoxe.presentation.ui
 
+import android.app.DatePickerDialog
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.zagon102.quanlybaidoxe.*
@@ -15,14 +14,18 @@ import com.zagon102.quanlybaidoxe.data.DBHelper
 import com.zagon102.quanlybaidoxe.presentation.model.User
 import com.zagon102.quanlybaidoxe.presentation.module.UserInfoModule
 import com.zagon102.quanlybaidoxe.ultis.*
+import java.time.LocalDate
+import java.util.*
 
 class AccountActivity : AppCompatActivity() {
+    private lateinit var mainTitle: TextView
     private lateinit var usernameText: TextInputEditText
     private lateinit var passwordText: TextInputEditText
     private lateinit var rePasswordText: TextInputEditText
     private lateinit var errorText: TextView
     private lateinit var nameText: TextInputEditText
     private lateinit var dobText: TextInputEditText
+    private lateinit var buttonDatePicker: ImageButton
     private lateinit var phoneText: TextInputEditText
     private lateinit var emailText: TextInputEditText
     private lateinit var editAccountButton: Button
@@ -38,10 +41,8 @@ class AccountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account)
         db = DBHelper(this, null)
-//        showLoading()
         getData()
         initViews()
-//        hideLoading()
     }
 
     private fun getData() {
@@ -57,12 +58,14 @@ class AccountActivity : AppCompatActivity() {
 
     private fun initViews() {
         hideButton()
+        mainTitle = findViewById(R.id.mainTitle)
         usernameText = findViewById(R.id.text_username)
         passwordText = findViewById(R.id.text_password)
         rePasswordText = findViewById(R.id.text_repassword)
         errorText = findViewById(R.id.errorText)
         nameText = findViewById(R.id.text_name)
         dobText = findViewById(R.id.text_dob)
+        buttonDatePicker = findViewById(R.id.button_datepicker)
         phoneText = findViewById(R.id.text_phone)
         emailText = findViewById(R.id.text_email)
         editAccountButton = findViewById(R.id.button_edit_account)
@@ -71,6 +74,21 @@ class AccountActivity : AppCompatActivity() {
             Constants.INFO -> showInfoState()
             Constants.CREATE -> showCreateAccountState()
             Constants.EDIT -> showEditAccountState()
+        }
+
+        buttonDatePicker.setOnClickListener{
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+            val dpd = DatePickerDialog(this, { _, year, monthOfYear, dayOfMonth ->
+                val date = LocalDate.of(year,monthOfYear+1,dayOfMonth)
+                dobText.setText(date.toDateFormat())
+            }, year, month, day)
+            dpd.datePicker.maxDate = Date().time
+            dpd.show()
+            dpd.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+            dpd.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
         }
 
         editAccountButton.setOnClickListener {
@@ -82,18 +100,36 @@ class AccountActivity : AppCompatActivity() {
                         it.dob = dobText.text.toString().toLocalDate()
                         it.phone = phoneText.text.toString()
                         it.email = emailText.text.toString()
+                        if(!it.email.isValidEmail()) {
+                            errorText.text = getString(R.string.email_not_valid)
+                            Toast.makeText(this,getString(R.string.email_not_valid),Toast.LENGTH_SHORT).show()
+                            return@setOnClickListener
+                        }
                         db.updateUser(it)
                         finish()
                     }
                 } else {
                     errorText.text = getString(R.string.password_mismatch)
+                    Toast.makeText(this,getString(R.string.password_mismatch),Toast.LENGTH_SHORT).show()
+
                 }
                 Constants.CREATE -> if(validateUsername() && validatePassword()) {
+                    if(!emailText.text.toString().isValidEmail()) {
+                        errorText.text = getString(R.string.email_not_valid)
+                        Toast.makeText(this,getString(R.string.email_not_valid),Toast.LENGTH_SHORT).show()
+                        return@setOnClickListener
+                    }
+                    val cursor = db?.getUser(usernameText.text.toString())
+                    if(cursor != null && cursor.moveToFirst()) {
+                        errorText.text = getString(R.string.username_not_availabel)
+                        Toast.makeText(this,getString(R.string.username_not_availabel),Toast.LENGTH_SHORT).show()
+                        return@setOnClickListener
+                    }
                     val user = User(
                         null,
                         usernameText.text.toString(),
                         passwordText.text.toString(),
-                        role,
+                        if(role == Constants.MANAGER) Constants.EMPLOYEE else Constants.CUSTOMER,
                         nameText.text.toString(),
                         dobText.text.toString().toLocalDate(),
                         phoneText.text.toString(),
@@ -127,11 +163,9 @@ class AccountActivity : AppCompatActivity() {
         passwordText.isEnabled = state
         rePasswordText.isEnabled = state
         errorText.text = ""
+        phoneText.isEnabled = state && type == Constants.CREATE
         nameText.isEnabled = state
-        dobText.isEnabled = state
-        phoneText.isEnabled = state
         emailText.isEnabled = state
-
     }
 
     private fun showInfoState() {
@@ -144,8 +178,10 @@ class AccountActivity : AppCompatActivity() {
     }
 
     private fun showCreateAccountState() {
+        mainTitle.text = getString(R.string.create_account)
         editAccountButton.text = getString(R.string.create_new_account_label)
         findViewById<LinearLayout>(R.id.repassword_layout).visibility = View.VISIBLE
+        buttonDatePicker.visibility = View.VISIBLE
         setFieldState(true)
         usernameText.setText("")
         passwordText.setText("")
@@ -157,7 +193,9 @@ class AccountActivity : AppCompatActivity() {
     }
 
     private fun showEditAccountState() {
+        mainTitle.text = getString(R.string.edit_account)
         editAccountButton.text = getString(R.string.save)
+        buttonDatePicker.visibility = View.VISIBLE
         findViewById<LinearLayout>(R.id.repassword_layout).visibility = View.VISIBLE
         setFieldState(true)
         usernameText.isEnabled = false

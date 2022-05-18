@@ -5,7 +5,7 @@
     android:id="@+id/mainView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.CheckOutCompleteActivity">
+    tools:context=".presentation.ui.VehicleInCustomActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/layoutPadding"
-        android:text="@string/checkout_complete"
+        android:text="@string/vehicle_in"
         android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,7 +37,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_back"
+        app:layout_constraintBottom_toTopOf="@+id/button_area"
         app:layout_constraintTop_toTopOf="@id/contentView">
 
         <LinearLayout
@@ -49,7 +49,88 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_margin="10dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/suffixImageHeight"
+                    android:layout_marginStart="@dimen/prefixMargin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_location" />
+
+                <Spinner
+                    android:id="@+id/location_spinner"
+                    style="@style/AppAutoCompleteText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/suffixImageHeight"
+                    android:layout_marginStart="@dimen/prefixMargin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_star" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/auto_complete_brand"
+                    android:hint="@string/brand_hint"
+                    style="@style/AppAutoCompleteText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/suffixImageHeight"
+                    android:layout_marginStart="@dimen/prefixMargin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_seat" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/auto_complete_seat"
+                    android:hint="@string/seats"
+                    style="@style/AppAutoCompleteText"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/suffixImageHeight"
+                    android:layout_marginStart="@dimen/prefixMargin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_colors" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/auto_complete_color"
+                    android:hint="@string/colors"
+                    style="@style/AppAutoCompleteText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center">
 
                 <ImageView
@@ -61,7 +142,7 @@
 
                 <EditText
                     android:id="@+id/text_plate"
-                    android:enabled="false"
+                    android:hint="@string/plate"
                     style="@style/AppAutoCompleteText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -69,8 +150,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:gravity="center">
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -81,38 +163,25 @@
 
                 <EditText
                     android:id="@+id/text_checkin_date"
+                    android:hint="@string/checkin_date"
                     android:enabled="false"
+                    android:inputType="date"
                     style="@style/AppAutoCompleteText"
-                    android:maxLength="5"
-                    android:layout_width="match_parent"
+                    android:maxLength="10"
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/checkout_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/suffixImageHeight"
-                    android:layout_marginStart="@dimen/prefixMargin"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_vehicle_out" />
-
-                <EditText
-                    android:id="@+id/text_checkout_date"
-                    android:enabled="false"
-                    style="@style/AppAutoCompleteText"
-                    android:maxLength="5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                <ImageButton
+                    android:id="@+id/button_datepicker"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/icon_datepicker"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_margin="10dp"
                 android:gravity="center">
 
                 <ImageView
@@ -124,7 +193,7 @@
 
                 <EditText
                     android:id="@+id/text_name"
-                    android:enabled="false"
+                    android:hint="@string/name_label"
                     style="@style/AppAutoCompleteText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -132,7 +201,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_margin="10dp"
                 android:gravity="center">
 
                 <ImageView
@@ -144,66 +213,41 @@
 
                 <EditText
                     android:id="@+id/text_phone"
+                    android:hint="@string/phone_number_label"
                     style="@style/AppAutoCompleteText"
-                    android:enabled="false"
                     android:maxLength="15"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/suffixImageHeight"
-                    android:layout_marginStart="@dimen/prefixMargin"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_location" />
-
-                <EditText
-                    android:id="@+id/text_location"
-                    style="@style/AppAutoCompleteText"
-                    android:enabled="false"
-                    android:maxLength="15"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/suffixImageHeight"
-                    android:layout_marginStart="@dimen/prefixMargin"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_cash" />
-
-                <EditText
-                    android:id="@+id/text_cash"
-                    style="@style/AppAutoCompleteText"
-                    android:enabled="false"
+                    android:imeOptions="actionDone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-
+    <LinearLayout
+        android:id="@+id/button_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/layoutPadding"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
         <Button
             android:id="@+id/button_back"
             style="@style/AppOutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_margin="@dimen/layoutPadding"
+            android:layout_width="0dp"
+            android:layout_marginEnd="@dimen/layoutMargin"
             android:text="@string/back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/button_confirm"
+            style="@style/AppOutlinedButton"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/layoutMargin"
+            android:text="@string/confirm"/>
+    </LinearLayout>
 
 
     <include

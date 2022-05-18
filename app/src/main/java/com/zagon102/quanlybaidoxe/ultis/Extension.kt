@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
+import android.util.Patterns
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
@@ -71,4 +72,8 @@ fun Context.saveUserToLocal() {
         it.putString(Constants.PASSWORD,UserInfoModule.user?.password ?: "")
         it.apply()
     }
+}
+
+fun String.isValidEmail(): Boolean {
+    return !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
 }

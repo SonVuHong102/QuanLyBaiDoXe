@@ -48,6 +48,14 @@
     <string name="save">Save</string>
     <string name="password_mismatch">Password mismatch</string>
     <string name="create_user_error">Username is existing or Passwords mismatch</string>
+    <string name="vehicle_management">VEHICLE\nMANAGEMENT</string>
+    <string name="newcustomer">NEW CUSTOMER</string>
+    <string name="new_label">NEW</string>
+    <string name="create_account">CREATE ACCOUNT</string>
+    <string name="edit_account">EDIT ACCOUNT</string>
+    <string name="search_by_phone">Search by phone</string>
+    <string name="email_not_valid">Email is not valid !</string>
+    <string name="username_not_availabel">Username is not available</string>
     <string-array name="brand_array">
         <item>Toyota</item>
         <item>Volkswagen </item>

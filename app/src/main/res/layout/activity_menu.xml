@@ -47,8 +47,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:padding="@dimen/layoutPadding"
-                android:orientation="vertical"
-                tools:context=".presentation.ui.LoginActivity">
+                android:orientation="vertical">
                 <LinearLayout
                     android:id="@+id/account_button"
                     android:layout_width="match_parent"
@@ -85,7 +84,6 @@
                     android:gravity="center"
                     android:background="@drawable/rounded_corner_button"
                     android:orientation="horizontal"
-                    android:visibility="gone"
                     >
 
                     <ImageView
@@ -102,6 +100,34 @@
                         android:textColor="@color/gradient_end_color"
                         android:fontFamily="sans-serif-medium"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/vehicle_management_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/layoutPadding"
+                    android:layout_marginBottom="@dimen/layoutPadding"
+                    android:gravity="center"
+                    android:background="@drawable/rounded_corner_button"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/suffixImageHeight"
+                        android:layout_marginStart="@dimen/prefixMargin"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/icon_vehicle_management" />
+
+                    <TextView
+                        android:text="@string/vehicle_management"
+                        style="@style/AppTitle"
+                        android:textSize="25sp"
+                        android:textColor="@color/green"
+                        android:layout_marginStart="@dimen/layoutMargin"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
 

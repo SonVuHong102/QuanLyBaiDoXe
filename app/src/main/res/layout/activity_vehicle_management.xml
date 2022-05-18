@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.VehicleOutActivity">
+    tools:context=".presentation.ui.VehicleManagementActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -21,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/layoutPadding"
-        android:text="@string/vehicle_out"
+        android:text="@string/vehicle_management"
         android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,28 +35,44 @@
         app:layout_constraintTop_toBottomOf="@id/mainTitle" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/vehicle_check_list"
+        android:id="@+id/vehicle_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/layoutPadding"
         android:layout_marginStart="@dimen/layoutPadding"
         android:layout_marginEnd="@dimen/layoutPadding"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/button_back"
+        app:layout_constraintBottom_toTopOf="@+id/button_area"
         app:layout_constraintTop_toTopOf="@id/contentView">
 
     </androidx.recyclerview.widget.RecyclerView>
 
 
+    <LinearLayout
+        android:id="@+id/button_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/layoutPadding"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
         <Button
             android:id="@+id/button_back"
             style="@style/AppOutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_margin="@dimen/layoutMargin"
-            android:text="@string/back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_marginEnd="@dimen/layoutMargin"
+            android:text="@string/back"/>
+        <Button
+            android:id="@+id/button_create_account"
+            style="@style/AppOutlinedButton"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/layoutMargin"
+            android:text="@string/create_new_account_label"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
     <include
         android:id="@+id/loadingView"

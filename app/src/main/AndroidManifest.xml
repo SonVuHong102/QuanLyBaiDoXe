@@ -10,16 +10,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuanLyBaiDoXe" >
         <activity
+            android:name=".presentation.ui.VehicleInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.CreateNewVehicleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.VehicleManagementActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.CheckOutCompleteActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.ui.VehicleOutActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
-            android:name=".presentation.ui.VehicleInActivity"
-            android:exported="false" >
-        </activity>
+            android:name=".presentation.ui.VehicleInCustomActivity"
+            android:exported="false" />
         <activity
             android:name=".presentation.ui.ReportActivity"
             android:exported="false" />
@@ -31,7 +38,7 @@
             android:exported="false" />
         <activity
             android:name=".presentation.ui.LoginActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

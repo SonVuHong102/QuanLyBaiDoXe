@@ -174,8 +174,10 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/AppOutlinedBox"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:layout_weight="3"
                     android:hint="@string/dob_label">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -183,8 +185,15 @@
                         style="@style/AppEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="date" />
+                        android:enabled="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
+                <ImageButton
+                    android:id="@+id/button_datepicker"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="5dp"
+                    android:visibility="gone"
+                    android:src="@drawable/icon_datepicker"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -207,6 +216,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/text_phone"
                         style="@style/AppEditText"
+                        android:enabled="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
