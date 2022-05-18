@@ -12,7 +12,6 @@ class Constants {
         val EDIT = "EDIT"
         val VEHICLE_CHECK = "VEHICLE_CHECK"
         val BUNDLE = "BUNDLE"
-        val price = 50000
         val PENDING = "0"
         val DONE = "1"
         val SHARED_PREFERENCE_NAME = "SHARED_PREFERENCE_NAME"
@@ -21,5 +20,6 @@ class Constants {
         val parkingLocations = listOf(
             "HVCNBCVT","DHKT","HVYDCT","DHHN"
         )
+        val defaultPrice = 50000
     }
 }

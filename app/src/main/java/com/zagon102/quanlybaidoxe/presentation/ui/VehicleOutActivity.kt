@@ -28,6 +28,7 @@ class VehicleOutActivity : AppCompatActivity() {
     private lateinit var vehicleCheckList: MutableList<VehicleCheck>
     private var db: DBHelper? = null
     private var vehicleCheck: VehicleCheck? = null
+    private var price = Constants.defaultPrice
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vehicle_out)
@@ -53,7 +54,7 @@ class VehicleOutActivity : AppCompatActivity() {
 
     private fun getData() {
         vehicleCheckList.clear()
-        val cursor = db?.getPendingChecks()
+        var cursor = db?.getPendingChecks()
         if(cursor != null && cursor.moveToFirst()) {
             do {
                 vehicleCheckList.add(
@@ -76,6 +77,10 @@ class VehicleOutActivity : AppCompatActivity() {
             Toast.makeText(this,"Empty",Toast.LENGTH_SHORT).show()
         }
         adapter.notifyDataSetChanged()
+        cursor = db?.getPrice()
+        if(cursor != null && cursor.moveToFirst()) {
+            price = cursor.getInt(cursor.getColumnIndexOrThrow(DBHelper.PRICE_COL))
+        }
     }
 
     private val onItemClick: (VehicleCheck) -> Unit = {
@@ -85,7 +90,7 @@ class VehicleOutActivity : AppCompatActivity() {
     private fun showDialog(vehicleCheck: VehicleCheck) {
         this.vehicleCheck = vehicleCheck
         this.vehicleCheck!!.checkOutDate = LocalDate.now()
-        this.vehicleCheck!!.cash = ((ChronoUnit.DAYS.between(vehicleCheck.checkInDate, LocalDate.now())+1)* Constants.price)
+        this.vehicleCheck!!.cash = ((ChronoUnit.DAYS.between(vehicleCheck.checkInDate, LocalDate.now())+1)* price)
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)

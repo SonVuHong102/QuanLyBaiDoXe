@@ -56,6 +56,7 @@
     <string name="search_by_phone">Search by phone</string>
     <string name="email_not_valid">Email is not valid !</string>
     <string name="username_not_availabel">Username is not available</string>
+    <string name="price">Price</string>
     <string-array name="brand_array">
         <item>Toyota</item>
         <item>Volkswagen </item>

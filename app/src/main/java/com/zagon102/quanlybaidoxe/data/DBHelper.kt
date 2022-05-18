@@ -48,9 +48,17 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                 PLATE_COL + " TEXT," +
                 PHONE_COL + " TEXT" +")")
         db.execSQL(query)
+        query = ("CREATE TABLE " + PRICE_TABLE_NAME + " ("
+                + ID_COL + " INTEGER PRIMARY KEY, " +
+                PRICE_COL + " INTEGER" +")")
+        db.execSQL(query)
         query =
             ("INSERT INTO $USER_TABLE_NAME ($USERNAME_COl,$PASSWORD_COL,$NAME_COL,$DOB_COL,$PHONE_COL,$EMAIL_COL,$ROLE_COL) " +
                     "VALUES ('admin','admin','admin','01/01/2000','0912345678','anonymousemail@gmail.com','${Constants.MANAGER}')")
+        db.execSQL(query)
+        query =
+            ("INSERT INTO $PRICE_TABLE_NAME ($PRICE_COL) " +
+                    "VALUES (${Constants.defaultPrice})")
         db.execSQL(query)
     }
 
@@ -58,6 +66,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         db.execSQL("DROP TABLE IF EXISTS $USER_TABLE_NAME")
         db.execSQL("DROP TABLE IF EXISTS $CHECK_TABLE_NAME")
         db.execSQL("DROP TABLE IF EXISTS $VEHICLE_TABLE_NAME")
+        db.execSQL("DROP TABLE IF EXISTS $PRICE_TABLE_NAME")
         onCreate(db)
     }
 
@@ -150,6 +159,11 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         return db.rawQuery("SELECT * FROM $USER_TABLE_NAME WHERE $PHONE_COL = ?", arrayOf(phone))
     }
 
+    fun getPrice(): Cursor? {
+        val db = this.readableDatabase
+        return db.rawQuery("SELECT * FROM $PRICE_TABLE_NAME", arrayOf())
+    }
+
     fun updateUser(user: User) {
         val db = this.writableDatabase
         val values = ContentValues()
@@ -172,12 +186,21 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         db.close()
     }
 
+    fun updatePrice(price: Int) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put(PRICE_COL, price)
+        db.update(PRICE_TABLE_NAME, values, "$ID_COL = 1", arrayOf())
+        db.close()
+    }
+
     companion object {
         private val DATABASE_NAME = "MyDatabase"
         private val DATABASE_VERSION = 1
         val USER_TABLE_NAME = "user_table"
         val CHECK_TABLE_NAME = "check_table"
         val VEHICLE_TABLE_NAME = "vehicle_table"
+        val PRICE_TABLE_NAME = "price_table"
         val ID_COL = "id"
         val USERNAME_COl = "username"
         val PASSWORD_COL = "password"
@@ -195,5 +218,6 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val CHECKOUT_COL = "checkout"
         val CASH_COL = "cash"
         val DONE_COL = "done"
+        val PRICE_COL = "price"
     }
 }

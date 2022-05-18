@@ -245,8 +245,37 @@
                         style="@style/AppEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:imeOptions="actionDone"
                         android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/price_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                style="@style/SuffixTextField">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/suffixImageHeight"
+                    android:layout_marginStart="@dimen/prefixMargin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_cash" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppOutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/price">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_price"
+                        style="@style/AppEditText"
+                        android:enabled="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberSigned" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
         </LinearLayout>

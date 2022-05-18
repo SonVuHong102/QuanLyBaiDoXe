@@ -9,7 +9,7 @@ import com.zagon102.quanlybaidoxe.presentation.model.VehicleCheck
 import com.zagon102.quanlybaidoxe.ultis.Constants
 import com.zagon102.quanlybaidoxe.ultis.toCurrency
 import com.zagon102.quanlybaidoxe.ultis.toDateFormat
-import java.time.temporal.ChronoUnit
+import org.w3c.dom.Text
 
 class CheckOutCompleteActivity : AppCompatActivity() {
     lateinit var plateText: TextView
@@ -18,6 +18,7 @@ class CheckOutCompleteActivity : AppCompatActivity() {
     lateinit var nameText: TextView
     lateinit var phoneText: TextView
     lateinit var cashText: TextView
+    lateinit var locationText: TextView
     lateinit var backButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +37,7 @@ class CheckOutCompleteActivity : AppCompatActivity() {
         nameText = findViewById(R.id.text_name)
         phoneText = findViewById(R.id.text_phone)
         cashText = findViewById(R.id.text_cash)
+        locationText = findViewById(R.id.text_location)
         backButton = findViewById(R.id.button_back)
 
         backButton.setOnClickListener{
@@ -54,6 +56,7 @@ class CheckOutCompleteActivity : AppCompatActivity() {
                 nameText.text = it.name
                 phoneText.text = it.phone
                 cashText.text = it.cash!!.toCurrency()
+                locationText.text = it.location
             }
         }
     }

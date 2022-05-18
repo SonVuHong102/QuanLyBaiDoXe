@@ -28,6 +28,7 @@ class AccountActivity : AppCompatActivity() {
     private lateinit var buttonDatePicker: ImageButton
     private lateinit var phoneText: TextInputEditText
     private lateinit var emailText: TextInputEditText
+    private lateinit var priceText: TextInputEditText
     private lateinit var editAccountButton: Button
     private lateinit var createAccountButton: Button
 
@@ -51,8 +52,12 @@ class AccountActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
-        if(type != Constants.CREATE)
-             getUserInfo()
+        if(type != Constants.CREATE) {
+            getUserInfo()
+        }
+        if(role == Constants.MANAGER) {
+            getPrice()
+        }
         super.onResume()
     }
 
@@ -68,6 +73,7 @@ class AccountActivity : AppCompatActivity() {
         buttonDatePicker = findViewById(R.id.button_datepicker)
         phoneText = findViewById(R.id.text_phone)
         emailText = findViewById(R.id.text_email)
+        priceText = findViewById(R.id.text_price)
         editAccountButton = findViewById(R.id.button_edit_account)
 
         when (type) {
@@ -106,6 +112,10 @@ class AccountActivity : AppCompatActivity() {
                             return@setOnClickListener
                         }
                         db.updateUser(it)
+                        if(role == Constants.MANAGER) {
+                            val price = Integer.parseInt(priceText.text.toString())
+                            db?.updatePrice(price)
+                        }
                         finish()
                     }
                 } else {
@@ -199,6 +209,10 @@ class AccountActivity : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.repassword_layout).visibility = View.VISIBLE
         setFieldState(true)
         usernameText.isEnabled = false
+        if(role == Constants.MANAGER) {
+            findViewById<LinearLayout>(R.id.price_view).visibility = View.VISIBLE
+            priceText.isEnabled = true
+        }
     }
 
     private fun getUserInfo() {
@@ -208,6 +222,15 @@ class AccountActivity : AppCompatActivity() {
         dobText.setText(UserInfoModule.user?.dob?.toDateFormat() ?: "")
         phoneText.setText(UserInfoModule.user?.phone ?: "")
         emailText.setText(UserInfoModule.user?.email ?: "")
+    }
+
+    private fun getPrice() {
+        val cursor = db?.getPrice()
+        var price = Constants.defaultPrice
+        if(cursor != null && cursor.moveToFirst()) {
+            price = cursor.getInt(cursor.getColumnIndexOrThrow(DBHelper.PRICE_COL))
+        }
+        priceText.setText(price.toString())
     }
 
     private fun goToEditAccount() {
@@ -229,6 +252,7 @@ class AccountActivity : AppCompatActivity() {
         createAccountButton.setOnClickListener {
             goToCreateAccount()
         }
+        findViewById<LinearLayout>(R.id.price_view).visibility = View.VISIBLE
     }
 
 
